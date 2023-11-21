@@ -6,7 +6,6 @@ class Program
 {
     static void Main()
     {
-        // Example usage
         var scripture = new Scripture("John 3:16", "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.");
 
         var memorizer = new ScriptureMemorizer(scripture);
@@ -54,7 +53,7 @@ class Word
 {
     private string word;
     private bool hidden;
-    private int difficultyLevel; // New: Difficulty level of the word
+    private int difficultyLevel;
 
     public Word(string word, int difficultyLevel)
     {
@@ -88,7 +87,7 @@ class ScriptureMemorizer
 {
     private Scripture scripture;
     private List<Word> words;
-    private int score; // New: User's score
+    private int score; 
 
     public ScriptureMemorizer(Scripture scripture)
     {
@@ -99,7 +98,6 @@ class ScriptureMemorizer
 
     private void InitializeWords()
     {
-        // New: Assign difficulty levels based on word length
         words = scripture.GetWords().Select(word => new Word(word, word.Length)).ToList();
     }
 
@@ -146,7 +144,7 @@ class ScriptureMemorizer
         {
             var randomWord = visibleWords[new Random().Next(visibleWords.Count)];
             randomWord.Hide();
-            score += randomWord.GetDifficultyLevel(); // New: Increase score based on word difficulty
+            score += randomWord.GetDifficultyLevel();
         }
     }
 }
